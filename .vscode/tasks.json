@@ -1,0 +1,35 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build current file to out",
+      "type": "shell",
+      "command": "clang++",
+      "args": [
+        "-std=c++17",
+        "-Wall",
+        "-g",
+        "${file}",
+        "-o",
+        "${workspaceFolder}/out/${fileBasenameNoExtension}.out"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "build and run current file",
+      "dependsOn": ["build current file to out"],
+      "type": "shell",
+      "command": "${workspaceFolder}/out/${fileBasenameNoExtension}.out",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    }
+  ]
+}
