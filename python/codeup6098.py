@@ -1,27 +1,34 @@
-def nextDir(x, y):
-    global array
-    if array[x][y + 1] == 0 or array[x][y + 1] == 2:
-        return 0
-    elif array[x + 1][y] == 0 or array[x + 1][y] == 2:
-        return 1
+PATH = 0
+WALL = 1
+FOOD = 2
+VISITED = 9
+
+RIGHT = 0
+DOWN = 1
+NONE = 2
+
+def nextDir(x, y, maze):
+    if maze[x][y + 1] == PATH or maze[x][y + 1] == FOOD:
+        return RIGHT
+    elif maze[x + 1][y] == PATH or maze[x + 1][y] == FOOD:
+        return DOWN
     else:
-        return 2
+        return NONE
 
 array = []
 for i in range(10):
     array.append(list(map(int, input().split())))
 
 x, y = 1, 1
-dir = 0
 while True:
-    if array[x][y] == 2:
-        array[x][y] = 9
+    if array[x][y] == FOOD:
+        array[x][y] = VISITED
         break
-    array[x][y] = 9
-    next = nextDir(x, y)
-    if next == 0:
+    array[x][y] = VISITED
+    next_move = nextDir(x, y, array)
+    if next_move == RIGHT:
         y += 1
-    elif next == 1:
+    elif next_move == DOWN:
         x += 1
     else:
         break
