@@ -4,12 +4,10 @@ l.sort()
 first = l[N - 1]
 second = l[N - 2]
 
+count = (M // (K + 1)) * K
+count += M % (K + 1)
+
 result = 0
-
-result += first * K * (M // (K + 1))
-result += second * (M // (K + 1))
-
-M -= (M // (K + 1)) * (K + 1)
-
-result += first * M
+result += count * first
+result += (M - count) * second
 print(result)
