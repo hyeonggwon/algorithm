@@ -1,15 +1,15 @@
 N, M, K = map(int, input().split())
-l = list(map(int, input().split()))
-l.sort()
-first = l[N - 1]
-second = l[N - 2]
+numbers = list(map(int, input().split()))
+numbers.sort()
 
-result = 0
+first_largest = numbers[-1]
+second_largest = numbers[-2]
 
-result += first * K * (M // (K + 1))
-result += second * (M // (K + 1))
+# Number of times the repeating block (K times first, 1 time second) is used
+num_blocks = M // (K + 1)
+# Number of remaining additions, which will be the largest number
+remainder = M % (K + 1)
 
-M -= (M // (K + 1)) * (K + 1)
+result = num_blocks * (first_largest * K + second_largest) + remainder * first_largest
 
-result += first * M
 print(result)
