@@ -1,7 +1,5 @@
 n, k = map(int, input().split())
-A = list()
-for _ in range(n):
-    A.append(int(input()))
+A = [int(input()) for _ in range(n)]
 
 result = 0
 
