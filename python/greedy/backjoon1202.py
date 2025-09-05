@@ -3,9 +3,8 @@ import sys
 
 input = sys.stdin.readline
 n, k = map(int, input().split())
-jewel = []
-for _ in range(n):
-    heapq.heappush(jewel, list(map(int, input().split())))
+jewel = [list(map(int, input().split())) for _ in range(n)]
+heapq.heapify(jewel)
 
 backpack = []
 for _ in range(k):
