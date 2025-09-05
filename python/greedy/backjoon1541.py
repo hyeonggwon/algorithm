@@ -1,25 +1,17 @@
-expList = list(input())
-waitDigitStart = True
-i = 0
-isLeftParen = False
-while i < len(expList):
-    if expList[i] == '0' and waitDigitStart:
-        del(expList[i])
-        continue
-    elif expList[i].isdigit():
-        waitDigitStart = False
-    else:
-        waitDigitStart = True
-        if expList[i] == '-':
-            if isLeftParen:
-                expList.insert(i, ')')
-                isLeftParen = False
-            else:
-                expList.insert(i + 1, '(')
-                i += 1
-                isLeftParen = True
-    i += 1
-if isLeftParen:
-    expList.append(')')
+parts = input().split('-')
+result = 0
 
-print(eval(''.join(expList)))
+# Calculate the sum of the first part (before the first '-')
+first_part_numbers = parts[0].split('+')
+for num_str in first_part_numbers:
+    result += int(num_str)
+
+# Subtract the sums of all subsequent parts
+for part in parts[1:]:
+    sub_part_numbers = part.split('+')
+    part_sum = 0
+    for num_str in sub_part_numbers:
+        part_sum += int(num_str)
+    result -= part_sum
+
+print(result)
