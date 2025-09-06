@@ -39,5 +39,5 @@ while True:
 count = 0
 for i in range(n):
     count += totalMap[i].count(VISITED)
-print(totalMap)
+# print(totalMap)
 print(count)
