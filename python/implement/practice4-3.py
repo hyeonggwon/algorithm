@@ -10,6 +10,5 @@ for i in range(8):
     ny = y + dy[i]
     if nx < 1 or ny < 1 or nx > 8 or  ny > 8:
         continue
-    # print(nx, ny)
     result += 1
 print(result)
