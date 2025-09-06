@@ -15,4 +15,4 @@ for plan in plans:
         continue
     x = nx
     y = ny
-print(nx, ny)
+print(x, y)
