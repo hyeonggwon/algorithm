@@ -35,7 +35,7 @@ while True:
         break
     x = nx
     y = ny
-    print(x, y)
+    # print(x, y)
 count = 0
 for i in range(n):
     count += totalMap[i].count(VISITED)
