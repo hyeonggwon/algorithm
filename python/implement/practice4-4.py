@@ -13,6 +13,7 @@ dx = [0, 1, 0, -1]
 dy = [-1, 0, 1, 0]
 
 totalMap[y][x] = VISITED
+count = 1
 while True:
     isMoved = False
     for i in range(4):
@@ -26,6 +27,7 @@ while True:
             x = nx
             y = ny
             isMoved = True
+            count += 1
             break
     if isMoved:
         continue
@@ -35,7 +37,4 @@ while True:
         break
     x = nx
     y = ny
-count = 0
-for i in range(n):
-    count += totalMap[i].count(VISITED)
 print(count)
