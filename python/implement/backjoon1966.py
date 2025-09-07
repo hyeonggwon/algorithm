@@ -7,12 +7,9 @@ for _ in range(testcase):
     result = 0
     while True:
         doc = docs.popleft()
-        for i in range(len(docs)):
-            if docs[i][1] > doc[1]:
-                docs.append(doc)
-                doc = []
-                break
-        if doc:
+        if any(d[1] > doc[1] for d in docs):
+            docs.append(doc)
+        else:
             result += 1
             if doc[0] == m:
                 break
