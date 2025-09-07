@@ -1,4 +1,5 @@
 import copy
+from itertools import combinations
 
 n, m = map(int, input().split())
 totalMap = [list(map(int, input().split())) for _ in range(n)]
@@ -24,29 +25,16 @@ def spreadVirus(i, j, virtualMap):
     if j + 1 < m and virtualMap[i][j + 1] == 0:
         spreadVirus(i, j + 1, virtualMap)
 
-for i in range(n * m):
-    yi = i // m
-    xi = i % m
-    if totalMap[yi][xi] != 0:
-        continue
-    for j in range(i + 1, n * m):
-        yj = j // m
-        xj = j % m
-        if totalMap[yj][xj] != 0:
-            continue
-        for k in range(j + 1, n * m):
-            yk = k // m
-            xk = k % m
-            if totalMap[yk][xk] != 0:
-                continue
-            virtualMap = copy.deepcopy(totalMap)
-            virtualMap[yi][xi] = 1
-            virtualMap[yj][xj] = 1
-            virtualMap[yk][xk] = 1
-            virtualWallCnt = wallCnt + 3
-            virusCnt = 0
-            for i, j in virusPos:
-                spreadVirus(i, j, virtualMap)
-            safetyAreaCnt = n * m - virtualWallCnt - virusCnt
-            maxSafetyAreaCnt = max(maxSafetyAreaCnt, safetyAreaCnt)
+empty_spaces = [(r, c) for r in range(n) for c in range(m) if totalMap[r][c] == 0]
+
+for wall_positions in combinations(empty_spaces, 3):
+    virtualMap = copy.deepcopy(totalMap)
+    for r, c in wall_positions:
+        virtualMap[r][c] = 1
+    virtualWallCnt = wallCnt + 3
+    virusCnt = 0
+    for i, j in virusPos:
+        spreadVirus(i, j, virtualMap)
+    safetyAreaCnt = n * m - virtualWallCnt - virusCnt
+    maxSafetyAreaCnt = max(maxSafetyAreaCnt, safetyAreaCnt)
 print(maxSafetyAreaCnt)
