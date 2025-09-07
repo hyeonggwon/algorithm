@@ -12,7 +12,7 @@ if len(mostCommon) >= 2 and mostCommon[0][1] == mostCommon[1][1]:
     mostFrequent = mostCommon[1][0]
 else:
     mostFrequent = mostCommon[0][0]
-arrange = abs(max(nums) - min(nums))
+arrange = nums[-1] - nums[0]
 print(round(avg))
 print(mid)
 print(mostFrequent)
