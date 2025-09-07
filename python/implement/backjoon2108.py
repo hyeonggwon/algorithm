@@ -1,8 +1,8 @@
 import sys
 from collections import Counter
 
-n = int(input())
 input = sys.stdin.readline
+n = int(input())
 nums = [int(input()) for _ in range(n)]
 nums.sort()
 avg = sum(nums) / n
