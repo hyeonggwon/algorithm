@@ -3,10 +3,7 @@ testcase = int(input())
 for _ in range(testcase):
     n, m = map(int, input().split())
     priorities = list(map(int, input().split()))
-    docs = []
-    for i in range(len(priorities)):
-        docs.append([i, priorities[i]])
-    docs = deque(docs)
+    docs = deque(enumerate(priorities))
     result = 0
     while True:
         doc = docs.popleft()
