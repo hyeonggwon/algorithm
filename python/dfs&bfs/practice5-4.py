@@ -16,7 +16,7 @@ def bfs(graph, dx, dy):
         for i in range(4):
             nx = x + dx[i]
             ny = y + dy[i]
-            if nx < 0 or ny < 0 or nx >= m or ny >= n or graph[ny][nx] == MONSTER or graph[ny][nx] != 1:
+            if nx < 0 or ny < 0 or nx >= m or ny >= n or graph[ny][nx] != 1:
                 continue
             queue.append((ny, nx))
             graph[ny][nx] = graph[y][x] + 1
