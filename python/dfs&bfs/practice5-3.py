@@ -21,12 +21,10 @@ graph = [list(map(int, input().split())) for _ in range(n)]
 
 count = 0
 
-empty_spaces = [(i, j) for i in range(n) for j in range(m) if graph[i][j] == EMPTY]
-for empty_space in combinations(empty_spaces, 1):
-    i = empty_space[0][0]
-    j = empty_space[0][1]
-    if graph[i][j] == EMPTY:
-        count += 1
-        dfs(graph, j, i, dx, dy)
+for i in range(n):
+    for j in range(m):
+        if graph[i][j] == EMPTY:
+            count += 1
+            dfs(graph, j, i, dx, dy)
 print(count)
 
