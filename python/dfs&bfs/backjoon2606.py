@@ -1,10 +1,10 @@
 import sys
 
-def dfs(graph, v, visited):
+def dfs(v):
     visited[v] = True
     for w in graph[v]:
         if not visited[w]:
-            dfs(graph, w, visited)
+            dfs(w)
 
 input = sys.stdin.readline
 
@@ -17,6 +17,6 @@ for _ in range(m):
     graph[u].append(v)
     graph[v].append(u)
 
-dfs(graph, 1, visited)
+dfs(1)
 
 print(sum(visited) - 1)

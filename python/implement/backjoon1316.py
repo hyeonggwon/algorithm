@@ -1,22 +1,17 @@
-NOT_VISITED = 0
-VISITING = 1
-VISITED = 2
-
 n = int(input())
-notGroupCnt = 0
+result = 0
 for _ in range(n):
     word = input()
-    visitStateDic = dict()
-    visitStateDic[word[0]] = VISITING
-    for i in range(1, len(word)):
-        if word[i] != word[i - 1]:
-            visitStateDic[word[i - 1]] = VISITED
-        visitState = visitStateDic.get(word[i], NOT_VISITED)
-        if visitState == NOT_VISITED:
-            visitStateDic[word[i]] = VISITING
-        elif visitState == VISITED:
-            notGroupCnt += 1
+    check = [False] * 26
+    prevX = ''
+    isGroup = True
+    for x in word:
+        i = ord(x) - ord('a')
+        if check[i] and x != prevX:
+            isGroup = False
             break
-result = n - notGroupCnt
+        check[i] = True
+        prevX = x
+    if isGroup:
+        result += 1
 print(result)
-

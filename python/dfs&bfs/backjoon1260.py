@@ -1,14 +1,14 @@
 import sys
 from collections import deque
 
-def dfs(graph, v, visited):
+def dfs(v):
     print(v, end=' ')
     visited[v] = True
     for i in graph[v]:
         if not visited[i]:
-            dfs(graph, i, visited)
+            dfs(i)
 
-def bfs(graph, start, visited):
+def bfs(start):
     queue = deque([start])
     visited[start] = True
     while queue:
@@ -30,7 +30,7 @@ for _ in range(m):
 for nodes in graph:
     nodes.sort()
 
-dfs(graph, v, visited)
+dfs(v)
 print()
 visited = [False] * (n + 1)
-bfs(graph, v, visited)
+bfs(v)

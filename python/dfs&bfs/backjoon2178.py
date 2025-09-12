@@ -1,8 +1,6 @@
 from collections import deque
 
-WALL = 0
-
-def bfs(graph, start):
+def bfs(start):
     dx = [1, -1, 0, 0]
     dy = [0, 0, 1, -1]
     queue = deque([start])
@@ -24,5 +22,5 @@ def bfs(graph, start):
 n, m = map(int, input().split())
 graph = [list(map(int, input())) for _ in range(n)]
 
-result = bfs(graph, (0, 0))
+result = bfs((0, 0))
 print(result)
