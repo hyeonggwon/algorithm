@@ -6,25 +6,18 @@ dz = [0, 0, 0, 0, -1, 1]
 
 def bfs(starts):
     queue = deque(starts)
-    child_queue = deque()
     result = -1
-    while child_queue or queue:
+    while queue:
         result += 1
-        while child_queue:
-            queue.append(child_queue.popleft())
-        while queue:
-            v = queue.popleft()
-            z = v[0]
-            x = v[1]
-            y = v[2]
+        for _ in range(len(queue)):
+            z, x, y = queue.popleft()
             for i in range(6):
                 nz = z + dz[i]
                 nx = x + dx[i]
                 ny = y + dy[i]
-                if nz < 0 or nz >= h or nx < 0 or nx >= n or ny < 0 or ny >= m or graph[nz][nx][ny] != 0:
-                    continue
-                graph[nz][nx][ny] = 1
-                child_queue.append((nz, nx, ny))
+                if 0 <= nz < h and 0 <= nx < n and 0 <= ny < m and graph[nz][nx][ny] == 0:
+                    graph[nz][nx][ny] = 1
+                    queue.append((nz, nx, ny))
     return result
 
 m, n, h = map(int, input().split())
@@ -32,13 +25,7 @@ graph = [[list(map(int, input().split())) for _ in range(n)] for _ in range(h)]
 ripes = [(z, x, y) for z in range(h) for x in range(n) for y in range(m) if graph[z][x][y] == 1]
 
 answer = bfs(ripes)
-isAllRipe = True
-for z in range(h):
-    for x in range(n):
-        for y in range(m):
-                if graph[z][x][y] == 0:
-                    isAllRipe = False
-if isAllRipe:
-    print(answer)
-else:
+if any(0 in row for z_plane in graph for row in z_plane):
     print(-1)
+else:
+    print(answer)
