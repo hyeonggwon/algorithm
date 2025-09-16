@@ -4,22 +4,18 @@ from collections import deque
 dx = [1, -1, 0, 0]
 dy = [0, 0, -1, 1]
 
-def bfs(start):
+def bfs(start, graph, m, n):
     queue = deque([start])
-    x = start[0]
-    y = start[1]
+    x, y = start
     graph[y][x] = 2
     while queue:
-        v = queue.popleft()
-        x = v[0]
-        y = v[1]
+        curr_x, curr_y = queue.popleft()
         for i in range(4):
-            nx = x + dx[i]
-            ny = y + dy[i]
-            if nx < 0 or nx >= m or ny < 0 or ny >= n or graph[ny][nx] != 1:
-                continue
-            graph[ny][nx] = 2
-            queue.append((nx, ny))
+            nx = curr_x + dx[i]
+            ny = curr_y + dy[i]
+            if 0 <= nx < m and 0 <= ny < n and graph[ny][nx] == 1:
+                graph[ny][nx] = 2
+                queue.append((nx, ny))
 
 input = sys.stdin.readline
 t = int(input())
