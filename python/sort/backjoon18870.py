@@ -10,7 +10,7 @@ for i in range(n):
 X = list(set(X))
 X.sort()
 
-result = [0] * n
-for i in range(n):
-    result[i] = bisect.bisect_left(X, mapper[i])
+coord_map = {val: i for i, val in enumerate(X)}
+result = [coord_map[val] for val in mapper]
+
 print(*result)

@@ -11,10 +11,10 @@ for _ in range(t):
         second_rank_array[x[0]] = x[1]
 
     result = 1
-    max_student = second_rank_array[1]
+    min_interview_rank = second_rank_array[1]
     for i in range(2, len(second_rank_array)):
-        if second_rank_array[i] < max_student:
-            max_student = second_rank_array[i]
+        if second_rank_array[i] < min_interview_rank:
+            min_interview_rank = second_rank_array[i]
             result += 1
     print(result)
 
