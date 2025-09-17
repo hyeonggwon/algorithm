@@ -21,4 +21,4 @@ lengths = [int(input()) for _ in range(k)]
 
 MAX = 2 ** 31 - 1
 
-print(binary_search(0, MAX))
+print(binary_search(1, MAX))
