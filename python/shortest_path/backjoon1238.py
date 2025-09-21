@@ -19,8 +19,8 @@ INF = int(1e9)
 input = sys.stdin.readline
 
 n, m, x = map(int, input().split())
-graph = [[] * (n + 1) for _ in range(n + 1)]
-reversed_graph = [[] * (n + 1) for _ in range(n + 1)]
+graph = [[] for _ in range(n + 1)]
+reversed_graph = [[] for _ in range(n + 1)]
 distance_from_x = [INF] * (n + 1)
 distance_to_x = [INF] * (n + 1)
 
