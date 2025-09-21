@@ -114,3 +114,22 @@ print(math.sqrt(7))
 print(math.gcd(21, 14))
 print(math.pi)
 print(math.e)
+
+def solution(A):
+    # Implement your solution here
+    max_heap_A = [-n for n in A]
+    max_heap_A = list(zip(max_heap_A, range(len(max_heap_A))))
+    heapq.heapify(max_heap_A)
+    print(max_heap_A)
+    print(max_heap_A[0])
+    result = 0
+    while max_heap_A:
+        curr = heapq.heappop(max_heap_A)
+        for n, i in max_heap_A:
+            if curr[0] > n and curr[1] < i:
+                result += 1
+        if result > 1_000_000_000:
+            return -1
+    return result
+
+print(solution([1, 3, 5, 7, 9, 2, 4, 6, 8]))
