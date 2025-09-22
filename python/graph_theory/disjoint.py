@@ -1,4 +1,4 @@
-# 전체 시간복잡도 : V + MlogV
+# 경로 압축 최적화 적용 시 전체 시간복잡도: O(V + E * α(V))
 
 def find_parent(parent, x):
     if parent[x] != x:
