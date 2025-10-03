@@ -1,3 +1,5 @@
+import random
+
 n = 3
 m = 4
 array = [[0] * m for _ in range(n)]
@@ -133,3 +135,5 @@ def solution(A):
     return result
 
 print(solution([1, 3, 5, 7, 9, 2, 4, 6, 8]))
+
+print(random.randint(0, 1))
