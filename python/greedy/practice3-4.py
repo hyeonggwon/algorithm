@@ -31,10 +31,14 @@
 
 n, k = map(int, input().split())
 cnt = 0
-while n > 1:
-    if n % k == 0:
-        n /= k
-    else:
-        n -= 1
+while n >= k:
+    # Add operations for subtractions to make n divisible by k
+    cnt += (n % k)
+    n //= k
+    # Add one operation for division
     cnt += 1
+
+# Add remaining subtractions for n < k
+if n > 1:
+    cnt += (n - 1)
 print(cnt)
