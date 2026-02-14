@@ -10,14 +10,12 @@ for word in words:
         nums[ord(word[i]) - ord('A')] += 10 ** (len(word) - i - 1)
 
 result = 0
-for i in range(9, 0, -1):
-    print(i, end=' ')
-    max_num = 0
-    max_num_j = 0
-    for j in range(len(nums)):
-        if nums[j] > max_num:
-            max_num = nums[j]
-            max_num_j = j
-    result += i * max_num
-    nums[max_num_j] = 0
+nums.sort(reverse=True)
+
+digit = 9
+for num in nums:
+    if num == 0:
+        break
+    result += digit * num
+    digit -= 1
 print(result)
