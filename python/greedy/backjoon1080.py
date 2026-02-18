@@ -9,9 +9,9 @@ import sys
 
 # 행렬 변환 함수
 def operation(i, j, matrix):
-    for k in range(0, 3):
-        for l in range(0, 3):
-            matrix[i + k][j + l] = (matrix[i + k][j + l] + 1) % 2
+    for row in range(i, i + 3):
+        for col in range(j, j + 3):
+            matrix[row][col] = 1 - matrix[row][col]
 
 input = sys.stdin.readline
 n, m = map(int, input().split())
