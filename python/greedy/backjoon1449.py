@@ -1,5 +1,7 @@
 import sys
 
+# 시간복잡도 : O(n)
+
 input = sys.stdin.readline
 n, l = map(int, input().split())
 holes = list(map(int, input().split()))

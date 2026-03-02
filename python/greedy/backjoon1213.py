@@ -3,6 +3,7 @@ import collections
 
 # 글자수가 짝수일 때 -> 2로 나눈 몫의 개수만큼 left에 넣기 (나중에 right에 반대로 채우면 되니까)
 # 글자수가 홀수일 때 -> 2로 나눈 몫의 개수만큼 left에, 하나는 middle에 넣기 (단, 글자수가 홀수인 게 1개보다 많으면 팰린드롬 불가)
+# 시간복잡도 : O(n)
 def solution():
     counter = collections.Counter(name)
     left = ""
