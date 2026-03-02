@@ -8,7 +8,7 @@ import sys
 # 이런식으로 늘어나게 된다. 즉, 해당 집합에 요소를 추가할 때 0부터 집합의 가장 큰 요소까지 더해지는 것이다.
 # 그럼 요소가 추가될 때 측정할 수 없는 양의 정수가 나오는 경우는? 현재 요소의 값이 "집합의 가장 큰 값 + 1" 보다 클 때이다.
 # 이 과정을 코드로 나타내면 아래와 같음.
-def solution():
+def solution(arr):
     # 합의 집합에서 가장 큰 값
     max_sum = 0
     for x in arr:
@@ -16,8 +16,7 @@ def solution():
         if x > max_sum + 1:
             break
         # 그렇지 않을 때, 집합에서 가장 큰 값 갱신
-        else:
-            max_sum = max_sum + x
+        max_sum += x
     return max_sum + 1
 
 input = sys.stdin.readline
