@@ -63,6 +63,7 @@ dy = [0, 1, 0, -1]
 n, m = map(int, input().split())
 x, y, d = map(int, input().split())
 total_map = [list(map(int, input().split())) for _ in range(n)]
+total_map[x][y] = 2
 
 while True:
     moved = False
@@ -72,7 +73,7 @@ while True:
         nx = x + dx[d]
         ny = y + dy[d]
 
-        if 0 <= nx < n and 0 <= ny < n and total_map[nx][ny] == 0:
+        if 0 <= nx < n and 0 <= ny < m and total_map[nx][ny] == 0:
             total_map[nx][ny] = 2
             x, y = nx, ny
             moved = True
@@ -82,7 +83,7 @@ while True:
         nx = x + dx[(d + 2) % 4]
         ny = y + dy[(d + 2) % 4]
 
-        if 0 <= nx < n and 0 <= ny < n and total_map[nx][ny] == 2:
+        if 0 <= nx < n and 0 <= ny < m and total_map[nx][ny] == 2:
             x, y = nx, ny
             continue
         else:
