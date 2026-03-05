@@ -36,3 +36,6 @@
 
 # naver
 naver/
+
+# IDE
+.idea/
