@@ -1,30 +1,57 @@
-from itertools import combinations
+# EMPTY = 0
+# WALL = 1
+# ICE = 2
+#
+# dx = [1, -1, 0, 0]
+# dy = [0, 0, 1, -1]
+#
+# def dfs(graph, x, y, dx, dy):
+#     graph[y][x] = ICE
+#     for i in range(4):
+#         nx = x + dx[i]
+#         ny = y + dy[i]
+#         if nx < 0 or ny < 0 or nx >= m or ny >= n or graph[ny][nx] != EMPTY:
+#             continue
+#         dfs(graph, nx, ny, dx, dy)
+#
+# n, m = map(int, input().split())
+# graph = [list(map(int, input().split())) for _ in range(n)]
+#
+# count = 0
+#
+# for i in range(n):
+#     for j in range(m):
+#         if graph[i][j] == EMPTY:
+#             count += 1
+#             dfs(graph, j, i, dx, dy)
+# print(count)
+#
+from collections import deque
 
-EMPTY = 0
-WALL = 1
-ICE = 2
 
-dx = [1, -1, 0, 0]
-dy = [0, 0, 1, -1]
+def bfs(graph, start):
+    queue = deque([start])
+    graph[start[0]][start[1]] = '2'
+    while queue:
+        x, y = queue.popleft()
+        for i in range(4):
+            nx = x + dx[i]
+            ny = y + dy[i]
+            if 0 <= nx < n and 0 <= ny < m and graph[nx][ny] == '0':
+                queue.append((nx, ny))
+                graph[nx][ny] = '2'
 
-def dfs(graph, x, y, dx, dy):
-    graph[y][x] = ICE
-    for i in range(4):
-        nx = x + dx[i]
-        ny = y + dy[i]
-        if nx < 0 or ny < 0 or nx >= m or ny >= n or graph[ny][nx] != EMPTY:
-            continue
-        dfs(graph, nx, ny, dx, dy)
+dx = [0, 0, 1, -1]
+dy = [1, -1, 0, 0]
 
 n, m = map(int, input().split())
-graph = [list(map(int, input().split())) for _ in range(n)]
+graph = [list(input()) for _ in range(n)]
 
-count = 0
-
+result = 0
 for i in range(n):
     for j in range(m):
-        if graph[i][j] == EMPTY:
-            count += 1
-            dfs(graph, j, i, dx, dy)
-print(count)
+        if graph[i][j] == '0':
+            bfs(graph, (i, j))
+            result += 1
 
+print(result)
