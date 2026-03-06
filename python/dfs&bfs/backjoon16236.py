@@ -3,8 +3,8 @@ from collections import deque
 
 def bfs(graph, start, size, visited):
     queue = deque([start])
-    x, y = start
-    visited[x][y] = True
+    start_x, start_y = start
+    visited[start_x][start_y] = True
     targets = []
     dist = -1
     while queue:
