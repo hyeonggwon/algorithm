@@ -38,4 +38,4 @@
 naver/
 
 # IDE
-.idea/
+.idea/*
