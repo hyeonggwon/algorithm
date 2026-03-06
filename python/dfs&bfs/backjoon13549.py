@@ -2,19 +2,22 @@ import sys
 from collections import deque
 
 def bfs(start):
-    queue = deque([(start, 0)])
+    queue = deque([start])
     dp[start] = 0
     while queue:
-        x, sec = queue.popleft()
-        walk_nx = [x - 1, x + 1]
+        x = queue.popleft()
+
+        # Teleport has 0 cost, add to front of deque
         teleport_nx = 2 * x
-        for nx in walk_nx:
-            if 0 <= nx <= 100_000 and dp[nx] > sec + 1:
-                dp[nx] = sec + 1
-                queue.append((nx, sec + 1))
-        if 0 <= teleport_nx <= 100_000 and dp[teleport_nx] > sec:
-            dp[teleport_nx] = sec
-            queue.append((teleport_nx, sec))
+        if 0 <= teleport_nx <= 100_000 and dp[teleport_nx] > dp[x]:
+            dp[teleport_nx] = dp[x]
+            queue.appendleft(teleport_nx)
+
+        # Walk has 1 cost, add to back of deque
+        for walk_nx in [x - 1, x + 1]:
+            if 0 <= walk_nx <= 100_000 and dp[walk_nx] > dp[x] + 1:
+                dp[walk_nx] = dp[x] + 1
+                queue.append(walk_nx)
 
 INF = sys.maxsize
 n, k = map(int, input().split())
