@@ -1,6 +1,6 @@
 import sys
 
-# 시간복잡도 : O(n)
+# 시간복잡도 : O(n log n)
 
 input = sys.stdin.readline
 n, l = map(int, input().split())
