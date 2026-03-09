@@ -10,8 +10,7 @@ for _ in range(t):
 
     answer = 'YES'
     for i in range(n - 1):
-        if len(arr[i]) <= len(arr[i + 1]):
-            if arr[i + 1].startswith(arr[i]):
-                answer = 'NO'
-                break
+        if arr[i + 1].startswith(arr[i]):
+            answer = 'NO'
+            break
     print(answer)
