@@ -8,9 +8,8 @@ heapq.heapify(heap)
 
 for _ in range(N - 1):
     line = list(map(int, input().split()))
-    for i in range(N):
-        if line[i] > heap[0]:
-            heapq.heappop(heap)
-            heapq.heappush(heap, line[i])
+    for num in line:
+        if num > heap[0]:
+            heapq.heapreplace(heap, num)
 
 print(heap[0])
