@@ -32,7 +32,6 @@ start, end = map(int, input().split())
 
 dijkstra(start)
 
-print(*p)
 print(d[end])
 print(len(p[end]))
 print(*p[end])
